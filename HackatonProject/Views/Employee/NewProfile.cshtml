@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "NewProfile";
+    Layout = "~/Views/Shard/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+
+
+    <h2>NewProfile</h2>
+
+    <div class="row">
+
+        <div class="col-sm-4">
+
+            <label for="Fullname">Full name</label>
+
+            <input id="Fullname" type="text" class="form-control" />
+
+        </div>
+
+        @*<br />*@
+        <div class="col-sm-4">
+
+            <label for="typeOfJob"> Type of job </label>
+
+            <form id="typeOfJob" action="" method="post">
+                <input type="checkbox" name="favorite1" value="Telemarketing" id="Telemarketing" /> Telemarketing
+                <input type="checkbox" name="favorite2" value="Salesperson" id="Salesperson" /> Salesperson
+                <input type="checkbox" name="favorite3" value="Craftwork" id="Craftwork" /> Craftwork
+                <input type="checkbox" name="favorite4" value="Guidance" id="Guidance" /> Guidance
+                <input type="checkbox" name="favorite5" value="Office work" id="Office work" /> Office work
+                <input type="checkbox" name="favorite5" value="Other" id="Other" /> Other
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="row">
+
+        <div class="col-sm-4">
+
+            <label for="Location">Location</label>
+
+            <input id="Location" type="text" class="form-control" />
+
+        </div>
+
+        <br />
+
+        <div class="col-sm-4">
+            <label for="TourOfDuty">Tour of Duty</label>
+            <select id="TourOfDuty" class="form-control">
+                <option>-choose an option-</option>
+                <option>Once a week</option>
+                <option>Twice a week</option>
+                <option>Three times a week</option>
+                <option>Four times a week</option>
+                <option>Full time</option>
+            </select>
+        </div>
+
+        <br />
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-sm-4">
+
+            <label for="Age">Age</label>
+
+            <input id="Age" type="text" class="form-control" />
+
+        </div>
+
+        <br />
+
+        <div class="col-sm-4">
+
+            <label for="drivingLicense">driving license</label>
+
+            <select id="drivingLicense" class="form-control">
+
+                <option>yes and own a car</option>
+
+                <option>yes</option>
+
+                <option>no</option>
+
+            </select>
+
+        </div>
+
+        <br />
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-sm-4">
+
+            <label for="PhoneNumber">Phone number</label>
+
+            <input id="PhoneNumber" type="text" class="form-control" />
+
+        </div>
+
+
+        <br />
+
+        <div class="col-sm-4">
+
+            <label for="Notes">Disability</label>
+
+            <textarea id="Notes" rows="5" class="form-control"></textarea>
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+    <br />
+
+
+    <div class="row">
+        <div class="col-sm-4">
+
+            <label for="EmailAddress">Email Address</label>
+
+            <input id="EmailAddress" type="text" class="form-control" />
+
+        </div>
+
+        <div class="col-sm-4">
+
+            <button type="button" id="btnSubmit" class="btn btn-default btn-lg">
+
+                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+
+                Submit
+
+            </button>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $("#btnSubmit").click(function () {
+
+        $.ajax({
+            method: "POST",
+            url: "/Employee/WriteNewProfile",
+            data: {
+                Fullname: $("#Fullname").val(),
+                typeOfJob: $("input:checkbox:checked").val(),
+                Location: $("#Location").val(),
+                TourOfDuty: $("#TourOfDuty").val(),
+                Age: $("#Age").val(),
+                drivingLicense: $("#drivingLicense").val(),
+                PhoneNumber: $("#PhoneNumber").val(),
+                Notes: $("#Notes").val(),
+                NEmailAddress: $("#EmailAddress").val()
+            }
+
+        })
+
+    });</script>

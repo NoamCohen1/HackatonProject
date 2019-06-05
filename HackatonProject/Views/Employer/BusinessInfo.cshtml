@@ -11,17 +11,9 @@
 
         <div class="col-sm-4">
 
-            <label for="Username">Username</label>
+            <label for="CompanyName">Company Name</label>
 
-            <input id="Username" type="text" class="form-control" />
-
-        </div>
-
-        <div class="col-sm-4">
-
-            <label for="Start">Start</label>
-
-            <input id="Start" type="text" class="form-control" />
+            <input id="CompanyName" type="text" class="form-control" />
 
         </div>
 
@@ -33,17 +25,9 @@
 
         <div class="col-sm-4">
 
-            <label for="Client">Client</label>
+            <label for="JobTitle">Job Title</label>
 
-            <input id="Client" type="text" class="form-control" />
-
-        </div>
-
-        <div class="col-sm-4">
-
-            <label for="DurationHours">Duration (Hours)</label>
-
-            <input id="DurationHours" type="text" class="form-control" />
+            <input id="JobTitle" type="text" class="form-control" />
 
         </div>
 
@@ -55,32 +39,40 @@
 
         <div class="col-sm-4">
 
-            <label for="Category">Category</label>
+            <label for="Location">Location</label>
 
-            <select id="Category" class="form-control">
+            <input id="Location" type="text" class="form-control" />
 
-                <option>Meeting</option>
+        </div>
 
-                <option>Administration</option>
+    </div>
 
-                <option>Analysis/Design</option>
+    <br />
 
-                <option>Development</option>
+    <div class="row">
 
-                <option>Testing</option>
+        <div class="col-sm-4">
+
+            <label for="TourOfDuty">Tour of Duty</label>
+
+            <select id="TourOfDuty" class="form-control">
+
+                <option>-choose an option-</option>
+
+                <option>Once a week</option>
+
+                <option>Twice a week</option>
+
+                <option>Three times a week</option>
+
+                <option>Four times a week</option>
+
+                <option>Full time</option>
 
             </select>
 
         </div>
 
-        <div class="col-sm-4">
-
-            <label for="DurationMinutes">Duration (Minutes)</label>
-
-            <input id="DurationMinutes" type="text" class="form-control" />
-
-        </div>
-
     </div>
 
     <br />
@@ -89,9 +81,9 @@
 
         <div class="col-sm-8">
 
-            <label for="Notes">Notes</label>
+            <label for="JobsRequirements">Job's Requirements</label>
 
-            <textarea id="Notes" rows="5" class="form-control"></textarea>
+            <textarea id="JobsRequirements" rows="5" class="form-control"></textarea>
 
         </div>
 
@@ -99,20 +91,37 @@
 
     <br />
 
-    <div class="row">
 
-        <div class="col-sm-8">
+    <div class="col-sm-4">
 
-            <button type="button" class="btn btn-default btn-lg">
+        <button type="button" id="btnSubmit" class="btn btn-default btn-lg">
 
-                <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
 
-                Submit
+            Submit
 
-            </button>
-
-        </div>
+        </button>
 
     </div>
 
 </div>
+
+<script>
+
+ $("#btnSubmit").click(function () {
+
+        $.ajax({
+            method: "POST",
+            url: "/Employer/Submit",
+            data: {
+                CompanyName: $("#CompanyName").val(),
+                JobTitle: $("#JobTitle").val(),
+                Location: $("#Location").val(),
+                TourOfDuty: $("#TourOfDuty").val(),
+                JobsRequirements: $("#JobsRequirements").val()
+            }
+
+        })
+
+    });
+</script>
